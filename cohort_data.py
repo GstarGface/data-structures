@@ -109,12 +109,14 @@ def all_students_tuple_list(filename):
                 # ...
             ]
     """
-
-    student_list = []
-
-    # Code goes here
-
-    return student_list
+    the_file = open(filename)
+    list_of_tuples = []
+    for line in the_file:
+        student_data = line.rstrip().split("|")
+        the_tuples = tuple(student_data)
+        list_of_tuples.append(the_tuples)
+    print list_of_tuples
+all_students_tuple_list("cohort_data.txt")
 
 
 def find_cohort_by_student_name(student_list):

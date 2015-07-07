@@ -13,13 +13,13 @@ def unique_houses(filename):
             ])
     
     """
-#    the_file = open(filename)
-#    houses = []
-#   for line in the_file:
-#        student_data = line.split("|")
-#       houses.append(student_data[2])
-#       all_houses = set(houses)
-#    return all_houses
+    the_file = open(filename)
+    houses = []
+    for line in the_file:
+       student_data = line.split("|")
+       houses.append(student_data[2])
+       all_houses = set(houses)
+    return all_houses
 
 def sort_by_cohort(filename):
     """TODO: Sort students by cohort.
@@ -69,8 +69,7 @@ def students_by_house(filename):
                         tas 
             ]
     """
-
-    all_students = []
+    the_file = open(filename)
     gryffindor = []
     hufflepuff = []
     slytherin = []
@@ -78,11 +77,26 @@ def students_by_house(filename):
     order_of_the_phoenix = []
     ravenclaw = []
     tas = []
+    for line in the_file:
+        student_data = line.rstrip().split("|")    
+        if student_data[2] == "Gryffindor":
+            gryffindor.append(student_data[1])
+        elif student_data[2] == "Hufflepuff":
+            hufflepuff.append(student_data[1])
+        elif student_data[2] == "Ravenclaw":
+            ravenclaw.append(student_data[1])
+        elif student_data[2] == "Slytherin":
+            slytherin.append(student_data[1])
+        elif student_data[2] == "Dumbledore's Army":
+            dumbledores_army.append(student_data[1])
+        elif student_data[2] == "Order of the Phoenix":
+            order_of_the_phoenix.append(student_data[1])
+        elif student_data[2] == "":
+            tas.append(student_data[1])
+    
+    houses_tas = [gryffindor,hufflepuff,ravenclaw,slytherin,dumbledores_army,order_of_the_phoenix, tas]
 
-    # Code goes here
-
-    return all_students
-
+    return houses_tas
 
 def all_students_tuple_list(filename):
     """TODO: Create a list of tuples of student data.
